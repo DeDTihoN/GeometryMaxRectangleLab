@@ -181,22 +181,23 @@ namespace ConvexHullRectangleApp
 
             // Сериализуем данные в JSON
             string jsonData = JsonConvert.SerializeObject(data);
-            jsonData = jsonData.Replace("\"", "\\\"");
 
             // Указываем путь к Python интерпретатору и скрипту
             string pythonPath = @"C:\Python311\python.exe";
             string scriptPath = @"../../src/cvx_optimization.py";
+            File.WriteAllText(@"../../src/data.json", jsonData);
 
             // Запускаем процесс Python
             ProcessStartInfo start = new ProcessStartInfo();
             start.FileName = pythonPath;
-            start.Arguments = $"\"{scriptPath}\" \"{jsonData}\"";
+            start.Arguments = $"\"{scriptPath}\"";
             //Console.WriteLine(start.Arguments);
             start.UseShellExecute = false;
             start.RedirectStandardOutput = true;
             start.RedirectStandardError = true;
             start.CreateNoWindow = true;
             List<double> result_list;
+            Console.WriteLine("CWHull size: {0}", CWHull.Length);
 
             using (Process process = Process.Start(start))
             {
@@ -385,6 +386,113 @@ namespace ConvexHullRectangleApp
             for (int i = 0; i < idxsCount; i++) pts[i] = points[idxs[i]];
 
             return GetLeftMost(pts);
+        }
+
+        static double TestMaxRectangle(int n)
+        {
+            PointF[] points = new PointF[n];
+            Random random = new Random();
+            for (int i=0;i<n;i++)
+            {
+                points[i] = new PointF((float)(random.Next(100000)), (float)(random.Next(100000)));
+            }
+            GrahamScan grahamScan = new GrahamScan(points);
+            Stopwatch sw = Stopwatch.StartNew();
+            grahamScan.solveGetMaximumAxisAlignedRectangle();
+            sw.Stop();
+            return sw.ElapsedMilliseconds;
+        }
+
+        static double TestMaxRectangleWithCWSize(int n)
+        {
+            PointF[] points = new PointF[n];
+            Random random = new Random();
+
+            int cur_x = 0, cur_y = 0;
+            int vec_x = 1, vec_y = 1;
+            for (int i = 0; i < n; i++)
+            {
+                points[i] = new PointF((float)(random.Next(cur_x)), (float)(cur_y));
+                cur_x+=vec_x;
+                if (i % 2 == 0)
+                {
+                    cur_y += random.Next(100000 - cur_y);
+                }
+                else
+                {
+                    cur_y -= random.Next(cur_y);
+                }
+            }
+            GrahamScan grahamScan = new GrahamScan(points);
+            Stopwatch sw = Stopwatch.StartNew();
+            grahamScan.solveGetMaximumAxisAlignedRectangle();
+            sw.Stop();
+            return sw.ElapsedMilliseconds;
+        }
+
+        static List<(double, double)> GetPolygonPoints(int sides, double radius)
+        {
+            List<(double, double)> points = new List<(double, double)>();
+
+            for (int i = 0; i < sides; i++)
+            {
+                double angle = 2 * Math.PI / sides * i;
+                double x = radius * Math.Cos(angle);
+                double y = radius * Math.Sin(angle);
+                points.Add((x, y));
+            }
+
+            return points;
+        }
+
+        static double TestMaxRectangleWithFixed(int n)
+        {
+            PointF[] points = new PointF[n];
+
+            List < (double, double) > polygonPoints = GetPolygonPoints(n, 100000);
+            for (int i = 0; i < n; i++)
+            {
+                points[i] = new PointF((float)polygonPoints[i].Item1, (float)polygonPoints[i].Item2);
+            }
+            GrahamScan grahamScan = new GrahamScan(points);
+            Stopwatch sw = Stopwatch.StartNew();
+            grahamScan.solveGetMaximumAxisAlignedRectangle();
+            sw.Stop();
+            return sw.ElapsedMilliseconds;
+        }
+
+        public static void Tests()
+        {
+            int n = 5;
+            for (int i = 0; i < 6; ++i)
+            {
+                double ms =TestMaxRectangle(n);
+                Console.WriteLine("Solution for {0} vertices found with {1} s", n, ms / 1000);
+                n *= 10;
+            }
+            return;
+        }
+        public static void TestsCW()
+        {
+            int n = 5;
+            for (int i = 0; i < 6; ++i)
+            {
+                double ms = TestMaxRectangleWithCWSize(n);
+                Console.WriteLine("Solution for {0} vertices found with {1} s", n, ms / 1000);
+                n *= 10;
+            }
+            return;
+        }
+        public static void TestsFixed()
+        {
+            int n = 5;
+            for (int i = 0; i < 6; ++i)
+            {
+                double ms = TestMaxRectangleWithFixed(n);
+                Console.WriteLine("Solution for {0} vertices found with {1} s", n, ms / 1000);
+                n *= 10;
+            }
+            return;
         }
     }
 }

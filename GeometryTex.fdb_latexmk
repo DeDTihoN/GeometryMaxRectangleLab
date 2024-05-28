@@ -1,0 +1,21 @@
+# Fdb version 4
+["pdflatex"] 1716821368 "c:/Users/pc/source/repos/ConvexHullRectangleApp/GeometryTex.tex" "GeometryTex.pdf" "GeometryTex" 1716821369 2
+  "GeometryTex.aux" 1716821368 34 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "GeometryTex.tex" 1716821307 11128 7eef1de596c787db630d245f90f7436e ""
+  "c:/Users/pc/source/repos/ConvexHullRectangleApp/GeometryTex.tex" 1716821307 11128 7eef1de596c787db630d245f90f7436e ""
+  "d:/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1700999908 3524 cb3e574dea2d1052e39280babc910dc8 ""
+  "d:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1700998243 1288 655e228510b4c2a1abe905c368440826 ""
+  "d:/texlive/2023/texmf-dist/tex/latex/base/article.cls" 1701001402 20144 fbcf51733730d8f1a62143512ff5b1fe ""
+  "d:/texlive/2023/texmf-dist/tex/latex/base/size12.clo" 1701001402 8449 9de778d73ba774a5f2bd601f23f8922e ""
+  "d:/texlive/2023/texmf-dist/tex/latex/fontspec/fontspec.sty" 1700999934 1656 7e824878bad4df5a3e8bba4e463d9126 ""
+  "d:/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def" 1701001338 29988 6d57d2b884f7464419678df319af86d2 ""
+  "d:/texlive/2023/texmf-dist/tex/latex/l3kernel/expl3.sty" 1701001350 6547 4212f386688ad9561172a8ee19d2b36f ""
+  "d:/texlive/2023/texmf-dist/tex/latex/l3packages/xparse/xparse.sty" 1701001364 9327 c30c00c0072edba199ede5889311aaa9 ""
+  "d:/texlive/2023/texmf-dist/web2c/texmf.cnf" 1700996456 41009 84b61f42d16d06bedb915f57aa2374cf ""
+  "d:/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1701027615 8213626 867f701f95dde81c2898a68d391123a1 ""
+  "d:/texlive/2023/texmf.cnf" 1701027333 713 e69b156964470283e0530f5060668171 ""
+  (generated)
+  "GeometryTex.aux"
+  "GeometryTex.log"
+  "GeometryTex.pdf"
+  (rewritten before read)

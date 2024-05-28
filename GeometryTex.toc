@@ -1,0 +1,12 @@
+\xpginauxfiletrue 
+\selectlanguage *{ukrainian}
+\contentsline {section}{\numberline {1}Вступ}{3}{section.1}%
+\contentsline {section}{\numberline {2}Основна частина}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Загальні положення}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Опис алгоритму}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Оцінка складності}{5}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Практична частина}{6}{section.3}%
+\contentsline {section}{\numberline {4}Висновки}{7}{section.4}%
+\contentsline {section}{\numberline {5}Додатки}{8}{section.5}%
+\contentsline {section}{Список літератури}{9}{section.5}%
+\xpginauxfilefalse 

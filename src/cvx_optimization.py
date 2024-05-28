@@ -1,3 +1,4 @@
+import os
 import sys
 import json
 from asyncio import sleep
@@ -5,7 +6,12 @@ from asyncio import sleep
 import cvxpy as cp
 
 if __name__ == "__main__":
-    data = json.loads(sys.argv[1])
+
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+
+    file_path = os.path.join(script_dir, 'data.json')
+    with open(file_path, 'r') as f:
+        data = json.load(f)
     P1 = data['P1']
     P2 = data['P2']
     B = data['B']
